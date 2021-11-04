@@ -1,47 +1,54 @@
-body{
-    font-family: 'Roboto', sans-serif;
-    background-color: #EEF9BF;
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #eef9bf;
 }
 
-header{
+header {
     font-size: 56px;
     font-weight: 700;
-    color: #75B79E;
+    color: #75b79e;
     text-align: center;
-
+  
     padding: 50px 0;
 }
-
-.cards{
-    width: 80%;
-
+  
+.row {
     margin: 0 auto;
-    background-color: #EEF9BF;
-
+  
     display: flex;
-    gap: 34px;
-    flex-wrap: wrap;
+    justify-content: space-around;
+  
+    margin-bottom: 30px;
 }
-
-.card{
+  
+.card {
     height: 146px;
     width: 117px;
-
+  
     border-radius: 5px;
-
+  
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background-color: #A7E9AF;
+  
+    background-color: #a7e9af;
 }
-
-.back-face{
+  
+.back-face {
+    height: 100px;
+    width: 100px;
+  
+    /*background-image: url("../assets/front.png");
+    background-size: cover;*/
+}
+  
+.front-face {
     height: 100px;
     width: 100px;
 
-    background-image: url("../assets/front.png");
-    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 }
-
+  
