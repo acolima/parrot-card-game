@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     background-color: #eef9bf;
@@ -24,31 +28,49 @@ header {
 .card {
     height: 146px;
     width: 117px;
-  
+
+    position: relative;
+}
+
+.face{
+    height: 100%;
+    width: 100%;
+
     border-radius: 5px;
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
+
     background-color: #a7e9af;
-}
-  
-.back-face {
-    height: 100px;
-    width: 100px;
-  
-    /*background-image: url("../assets/front.png");
-    background-size: cover;*/
-}
-  
-.front-face {
-    height: 100px;
-    width: 100px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.face span{
+    display: none;
+}
+
+.back-face img, 
+.front-face img{
+    width: 100px;
+}
+
+.front-face {
+    transform: rotateY(180deg);
+}
+
+.turnFront {
+    transform: rotateY(0deg);
+}
+
+.turnBack {
+    transform: rotateY(-180deg);
 }
   
+.guessed{   
+    pointer-events: none;
+}
