@@ -1,4 +1,4 @@
-let numberOfCards = prompt("Digite o número de cartas (de 2 a 14)");
+let numberOfCards = prompt("Digite o número de cartas (de 4 a 14)");
 const parrots = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"];
 const sortedParrots = [];
 
@@ -7,9 +7,9 @@ let turnedCards = 0;
 let pairsGuessed = 0;
 
 // Verifica se a quantidade de cartas é válida
-while (numberOfCards % 2 !== 0 || numberOfCards > 14 || numberOfCards <= 0) {
+while (numberOfCards % 2 !== 0 || numberOfCards > 14 || numberOfCards < 4) {
   numberOfCards = prompt(
-    "Esse não é um número válido. \n Digite o número de cartas"
+    "Esse não é um número válido. \n Digite o número de cartas (de 4 a 14)"
   );
 }
 
@@ -38,7 +38,7 @@ function createGame() {
 
     for (let i = 0; i < sortedParrots.length / 2; i++) {
         top.innerHTML += `
-        <li class = "card" onclick="flipCard(this)">
+        <li class = "card" onclick="flipCard(this)" data-identifier="card">
             <div class="face front-face" data-identifier="front-face">
                 <img class="gif" src="../assets/${sortedParrots[i]}.gif"/>
                 <span>${sortedParrots[i]}</span>
@@ -51,7 +51,7 @@ function createGame() {
 
     for (let j = sortedParrots.length / 2; j < sortedParrots.length; j++) {
         bottom.innerHTML += `
-        <li class = "card" onclick="flipCard(this)">
+        <li class = "card" onclick="flipCard(this)" data-identifier="card">
             <div class="face front-face face" data-identifier="front-face">
                 <img class="gif" src="../assets/${sortedParrots[j]}.gif"/>
                 <span>${sortedParrots[j]}</span>
@@ -97,34 +97,29 @@ function checkPair(){
             card2.classList.add("guessed");
             pairsGuessed++;
         } else {
-            unflipCard();
+            setTimeout(unflipCard, 1000, card1);
+            setTimeout(unflipCard, 1000, card2);
         }
         turnedCards = 0;
         card1 = null;   
+        setTimeout(checkEndGame, 500);
     }
-    checkEndGame();
+
 }
 
 // Desvira uma carta
-function unflipCard() {
-    const cards = document.querySelectorAll(".selected");
+function unflipCard(card) {
+    const cardFrontFace = card.children[0];
+    const cardBackFace = card.children[1];
 
-    setTimeout(() => {
-        for(let i = 0; i < cards.length; i++){
-            let cardFrontFace = cards[i].children[0];
-            let cardBackFace = cards[i].children[1];
-
-            cards[i].classList.remove("selected");
-            cardFrontFace.classList.remove("turnFront");
-            cardBackFace.classList.remove("turnBack");
-        }
-    }, 1000);
-
+    card.classList.remove("selected");
+    cardFrontFace.classList.remove("turnFront");
+    cardBackFace.classList.remove("turnBack");
 }
 
 // Verifica se todos os pares foram encontrados
 function checkEndGame() {
     if(pairsGuessed === numberOfCards/2){
-        alert("Você terminou em " + numberOfMoves+" jogadas");
+        alert(`Você ganhou em ${numberOfMoves} jogadas`);
     }
 }
