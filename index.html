@@ -2,6 +2,7 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,11 +16,17 @@
   <body>
     <header>
       <h1>PARROT CARD GAME</h1>
+      <div class="timer">
+        <p>Relógio </p>
+        <p><span class="minutes"> 00</span>:<span class="seconds">00</span></p>
+      </div>
     </header>
 
     <main>
-      <ul class="row top-row"></ul>
-      <ul class="row bottom-row"></ul>
+      <div class="cards">
+        <ul class="row top-row"></ul>
+        <ul class="row bottom-row"></ul>
+      </div>
     </main>
 
     <script src="script.js"></script>

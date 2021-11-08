@@ -12,19 +12,44 @@ header {
     font-weight: 700;
     color: #75b79e;
     text-align: center;
-  
+
+    position: relative; 
+}
+
+header h1{
     padding: 50px 0;
 }
-  
+
+header p{
+    font-size: 24px;
+}
+
+.timer{
+    width: 150px;
+    height: 70px;
+
+    background-color: #a7e9af;
+
+    border-radius: 10px;
+
+    position: absolute;
+    top: 28px;
+    right: 30px;
+
+    box-shadow: 5px 4px 10px #75b79e;
+}
+
+.timer p{
+    padding-top: 5px;
+}
+
 .row {
-    margin: 0 auto;
-  
     display: flex;
     justify-content: space-around;
   
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
-  
+
 .card {
     height: 146px;
     width: 117px;
@@ -48,6 +73,8 @@ header {
     backface-visibility: hidden;
     transition: transform 1s;
     transform-style: preserve-3d;
+
+    box-shadow: 5px 6px 10px #75b79e;
 }
 
 .face span{
@@ -63,14 +90,46 @@ header {
     transform: rotateY(180deg);
 }
 
-.turnFront {
+.turn-front {
     transform: rotateY(0deg);
 }
 
-.turnBack {
+.turn-back {
     transform: rotateY(-180deg);
 }
-  
-.guessed{   
+
+/* Carta não pode ser clicada se for a igual primeira carta selecionada ou se o par for encontrado*/
+.block-turn, .guessed{   
     pointer-events: none;
+}
+
+@media(max-width: 536px){
+    body{
+        width: 100%;
+    } 
+    main{
+        padding-top: 10px;
+    }
+    .cards{
+        width: 100%;
+        display: flex;
+    }
+    header{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    } 
+    header h1{
+        padding-bottom: 10px;
+    }
+    .row{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    .timer{
+       position: static;
+       width: 100%;
+    }
 }
